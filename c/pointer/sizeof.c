@@ -16,7 +16,8 @@ typedef struct{
 void test_size()
 {
     int a = 99;
-    char *p = &a;
+    char *p =(char *) &a;
+    int *p_int;
         
     printf("sizeof(char): %lu\n", sizeof(char));
     printf("sizeof(short):%lu\n", sizeof(short));
@@ -26,10 +27,12 @@ void test_size()
     printf("sizeof(long long): %lu\n ", sizeof(long long));
     printf("sizeof(long long int): %lu\n ", sizeof(long long int));
 
-    printf("sizeof(*p): %lu\n ", sizeof(*p));
+    printf("sizeof(*p(*char)): %lu\n ", sizeof(*p));
     printf("sizeof(p):  %lu\n ", sizeof(p));
 
     printf("sizeof(STU_SIZE_STRU) %lu\n  ", sizeof(STU_SIZE_STRU));
+
+    printf("sizeof(*int):= %lu \n", sizeof(*p_int));
 }
 
 
