@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -9,8 +10,9 @@
         <com.example.myapplication.uistu.viewstu.customizeview.way1.MyView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#ff0000"/>
-    </RelativeLayout>å
+            android:background="#ff0000"
+            app:default_size="100dp"/>
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>
