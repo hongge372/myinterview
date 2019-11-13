@@ -17,7 +17,7 @@ public class MyView  extends View{
     private Context ctx;
     private int width;
     private int height;
-    private int defaultSize=100;
+    private int defaultSize=150;
 
     public MyView(Context context){
         super(context);
@@ -93,8 +93,11 @@ public class MyView  extends View{
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
         int r = getMeasuredWidth()/2;
-        int centerX = getLeft()+r;
-        int centerY = getTop()+r;
+        //评论区有大神修正这个问题
+//        int centerX = getLeft()+r;
+//        int centerY = getTop()+r;
+        int centerX = r;
+        int centerY = r;
         Paint paint = new Paint();
         paint.setColor(Color.GREEN);
         canvas.drawCircle(centerX, centerY, r, paint);

@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:stuSize="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,8 +11,9 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#ff0000"
-            app:default_size="100dp"/>
+            stuSize:default_size="500dp"/>
     </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>
+
