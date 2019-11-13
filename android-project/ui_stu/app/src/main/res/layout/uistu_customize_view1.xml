@@ -3,4 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.example.myapplication.uistu.viewstu.customizeview.way1.MyView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ff0000"/>
+    </RelativeLayout>å
+
+
 </android.support.constraint.ConstraintLayout>
