@@ -10,19 +10,23 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.myapplication.R;
+import com.example.myapplication.uistu.utils.AndroidSizeUtil;
 
 public class MyView  extends View{
     public final String TAG = getClass().getName();
+    private Context ctx;
     private int width;
     private int height;
     private int defaultSize=100;
 
     public MyView(Context context){
         super(context);
+        ctx = context;
     }
 
     public MyView(Context context, AttributeSet attrs){
         super(context, attrs);
+        ctx = context;
         //第二个参数就是我们在styles.xml文件中的<declare-styleable>标签
         //即属性集合的标签，在R文件中名称为R.styleable+name
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MyView);
@@ -62,24 +66,26 @@ public class MyView  extends View{
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+        //widthMeasureSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.getMode(widthMeasureSpec));
+        //heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.getMode(heightMeasureSpec));
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        width = getMySize(defaultSize, widthMeasureSpec);
-         height = getMySize(defaultSize, heightMeasureSpec);
+        //width = getMySize(defaultSize, widthMeasureSpec);
+        //height = getMySize(defaultSize, heightMeasureSpec);
         //Log.v(TAG, "onMeasure, my width: " + width + "myHeight: " + height);
 
-        if(width<height){
-            height = width;
-        }else {
-            width = height;
-        }
+//        if(width<height){
+//            height = width;
+//        }else {
+//            width = height;
+//        }
 
         //问了专门做ui的同事，直接赋值是最好的
-        width = 275;
-        height = 275;
+        //width = 275;
+        //height = 275;
+        width = AndroidSizeUtil.Dp2Px(ctx,defaultSize);
+        height = AndroidSizeUtil.Dp2Px(ctx, defaultSize);
         Log.v(TAG, "onMeasure, final----my width: " + width + "myHeight: " + height);
-        widthMeasureSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.getMode(widthMeasureSpec));
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.getMode(heightMeasureSpec));
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(width, height);
     }
 
