@@ -81,10 +81,10 @@ public class MyViewGroup1 extends ViewGroup {
     /**
      *
      * @param changed
-     * @param l
-     * @param t
-     * @param r
-     * @param b
+     * @param l left
+     * @param t top
+     * @param r right
+     * @param b buttom
      */
 
     @Override
