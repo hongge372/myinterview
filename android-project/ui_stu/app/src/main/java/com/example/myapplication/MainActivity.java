@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.uistu.viewstu.customizeview.way1.UiStuCustomizeView1Activity;
+import com.example.myapplication.uistu.viewstu.customizeview.way1.UiStuCustomizeViewGroup1Activity;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = getClass().getName();
-    int buttonSize = 1;
+    int buttonSize = 2;
     Button[] buttons = new Button[buttonSize];
 
     @Override
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void registerMyStuButton() {
         buttons[0] = findViewById(R.id.bt_stu_ui_run_customizeview1_act);
+        buttons[1] = findViewById(R.id.bt_stu_ui_run_customizeviewgroup1_act);
         for(int i=0;i<buttonSize;i++){
             buttons[i].setOnClickListener(listener);
         }
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.bt_stu_ui_run_customizeview1_act:
                     intent.setClass(getApplicationContext(), UiStuCustomizeView1Activity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.bt_stu_ui_run_customizeviewgroup1_act:
+                    intent.setClass(getApplicationContext(), UiStuCustomizeViewGroup1Activity.class);
                     startActivity(intent);
                     break;
                 default:

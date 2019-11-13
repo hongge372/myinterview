@@ -27,7 +27,13 @@
                 android:id="@+id/bt_stu_ui_run_customizeview1_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="学习第一种自定义view"
+                android:text="自定义view-1"
+                />
+            <Button
+                android:id="@+id/bt_stu_ui_run_customizeviewgroup1_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自定义viewgroup-1"
                 />
         </LinearLayout>
 
