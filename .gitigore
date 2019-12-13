@@ -1,2 +1,4 @@
 #compile 
 *.dSYM/
+a.out
+*.out
