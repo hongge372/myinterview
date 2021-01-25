@@ -1,0 +1,16 @@
+当前分支：
+sunfengle/8.0.0_jimu
+
+1.格式
+
+ sh BuildSDKLibrary.sh 8.0.3.26-jimu
+
+2.打包方式：
+脚本
+
+
+3.打包服务器：
+映客(因为是全量包)
+export SDK_DISTRIBUTION_PATH="/Users/wanglizheng/inke/data/InkeSDKDistribution/iOS/pod/"
+export PODS_REPO_PATH="/Users/wanglizheng/inke/data/IKPodsRepo"
+git@code.inke.cn:tpc/client/ios/media_sdk/InkeSDKDistribution.git

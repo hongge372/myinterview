@@ -1,0 +1,1 @@
+./gradlew installQaEnvDebug --parallel --daemon --offline && adb shell am start -n com.meelive.ingkee/.business.commercial.launcher.ui.IngkeeLauncher

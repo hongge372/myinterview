@@ -1,0 +1,3 @@
+客户端设置滤镜资源的路径，
+BeautyManager.m中，设置
+- (void)loadFilterResourceFromPath:(NSString*)fullPath 

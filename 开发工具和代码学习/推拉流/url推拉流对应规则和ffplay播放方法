@@ -1,0 +1,13 @@
+1.最简推拉流地址：
+推流：
+private String srvUrl ="krns://push.inke.cn/226687321?&ikKnSlot=5&ikProfile=3&knRmSZ=6&ikWidth=480&ikHeight=640&ikMinBr=400&ikBr=600&ikMaxBr=1200&ikFps=15&ikFEC=3&clsInfo=23&ikOldWBE=0";
+拉流：
+private String srcUrl1 ="krns://pull.inke.cn/226687321?&ikKnSlot=5";
+
+
+2.ffplay播放：
+ffplay rtmp://ali-bj-bgp.pull.inke.cn/live/226687321_5.flv
+
+
+
+3.对应规则：域名+房间号+主播id

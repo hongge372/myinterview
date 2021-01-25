@@ -1,0 +1,9 @@
+1.下载工程，并允许 update.sh
+第一次运行会报错。运行后出现两个文件夹：
+inke-gdikpubpodsrepo  inke-eppodsrepo
+
+2.把新生成的两个文件夹改名字：
+gdikpubpodsrepo  soulmatch-eppodsrepo
+
+3.进入到工程目录，运行sh update.sh
+

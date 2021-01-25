@@ -1,0 +1,7 @@
+$ git clone --depth 1 https://github.com/dogescript/xxxxxxx.git
+$ git remote set-branches origin 'remote_branch_name'
+$ git fetch --depth 1 origin remote_branch_name
+$ git checkout remote_branch_name
+
+最后一步是简书做法，最好直接关联：
+$ git checkout -t origin/remote_branch_name

@@ -1,0 +1,11 @@
+一、http打头的要么是zego的，zego的有ikpath字段。要么是废弃的以前的鼎点地址。
+下面这个是顶点地址 http://temp.zigo.link.inke.cn：
+startSend url:http://temp.zigo.link.inke.cn:7788/publish/trans/inkeaudio/mlinks1_326/1578552928772648?ikPath=1&ikSoftAACLev=2&ikAACBitrate=64000&ikKnDebug=2&ikExposure=0&ikDisableFaceSei=1
+
+
+krns
+krns打头的是私有协议，代表连麦流的意思。
+我们根据推流地址来填拉流地址，要对应房间id和麦位号（ikKnSlot）：
+        [_videoManager setStreamUrl:@"krns://push.inke.cn/226687321?&ikKnSlot=0&ikProfile=3&knRmSZ=6&ikWidth=720&ikHeight=1280&ikBr=1200&ikFps=15"];
+         [_currentPlayer setStreamUrl:@"krns://pull.inke.cn/226687321?&ikKnSlot=0&clsInfo=23" streamIndex:0 option:nil streamInfo:NULL];
+

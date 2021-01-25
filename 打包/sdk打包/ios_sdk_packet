@@ -1,0 +1,8 @@
+进入sdk打包网址：
+http://192.168.40.153:8080/view/%E9%9F%B3%E8%A7%86%E9%A2%91SDK/job/ios_build2/
+点击配置，输入如下
+/*运行脚本，第一个参数是分支名字，第二个参数是起的别名*/
+！！！！！！！现在这种客户端才认
+./ios_sdk_build.sh feature/8.0.45_wlz_err_broken 8.0.45-player-wlz
+
+//sh ./ios_sdk_build.sh feature/8.0.30_wlz_Player_background wlz_player_backg

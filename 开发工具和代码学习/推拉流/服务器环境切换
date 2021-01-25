@@ -1,0 +1,4 @@
+服务器设置调用接口
+setKrnsEnv 1 //0是线上环境，1是测试环境。
+
+ljcc [Player] setKrnsEnv 1

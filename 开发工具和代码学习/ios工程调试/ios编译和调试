@@ -1,0 +1,55 @@
+一.编译ios版ffmpeg相关api调用库。
+
+a. ffmpeg工具库，ios版本脚本位置：
+/inke/src/video_sdk/Trunk/PowerinfoInc/ijkplayer-ios/ios
+编译脚本：
+sh compile-ffmpeg.sh armv7 arm64
+
+b. ffmpeg调用库，同级目录
+sh inke_compile_mediatool_library.sh
+(这个编译玩最后会输出一个err，不用管，只要能生成libmeediatool.a就可以   )
+编译完成后，如果调试映客工程，把动态库拷贝过去就可以happy的打断点了。
+
+
+****默认inke_compile_mediatool_library.sh全部编译
+
+c. 拷贝静态库，工具库默认集成，
+
+备注：
+Trunk/ClientSDK/LiveVideo/Platform/iOS/RTMPSender/RTMPSender.xcodeproj/project.pbxproj
+
+
+ffmpeg配置文件
+/inke/src/video_sdk/Trunk/PowerinfoInc/ijkplayer-ios/config
+
+调试百度sdk命令：
+http://wssource.rtc.meelove.cn/live/1579504927000q8Q_0.flv
+
+
+
+完整编译ios工程：
+进入video_sdk/Trunk/ClientSDK
+运行： sh BuildSDKLibrary.sh
+运行后选择1，完整编译inke工程。
+
+
+
+
+二.在映客app中调试 libMeeLiveMedia.a
+1：在demo工程中，选择 MeeLiveMedia ，菜单栏手动运行build.
+2. 把生成的libMeeLiveMedia.a拷贝到app工程中。
+3. 打断点，并选择 remove 到 user。
+
+
+
+
+App工程里面， IKVideoReplayKitSdk，是游戏直播相关的工程，我们不需要管理。
+IKVideoSdk里面放的是编译工程的静态库，只要替换这里的就可以。
+
+关于静态库替换，工程很大，左下角有搜索按钮，可以搜索对应的文件名字，搜索后libmedia，游戏工程只有一个libMeeLiveMedia.a,需要替换的工程有两个，libMeeLiveMedia.a,libmediatool.a.
+
+我们在首次运行app的时候，需要执行pod install,不运行这个，进入到app目录，运行 
+sh update_pods.sh
+效果相同，出现日志提示pod install 成功就可以，脚本比较复杂，最后很有可能报错，不用关心。
+
+

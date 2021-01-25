@@ -1,0 +1,40 @@
+demo:
+select
+  *
+from
+  medias.view_multimedia_app
+where
+  ymd = '20200813'
+  and uid = '1234580'
+limit
+  10
+
+
+
+select
+  *
+from
+  medias.view_multimedia_app
+where
+  ymd = '20200817'
+  and appname = 'jimu'
+  and eid = 'PlayerOpenInfo'
+  and uid = '10923207'
+limit
+  10
+
+成功：
+select
+  *
+from
+  medias.view_multimedia_app
+where
+  ymd = '20201022'
+  and appname = 'newbusiness-epp'
+  and uid = '623045597'
+  and eid = 'PlayerLog'
+limit
+  100
+
+
+

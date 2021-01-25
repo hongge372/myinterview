@@ -1,0 +1,43 @@
+- (IBAction)playerBtnStart:(id)sender{
+    //here for ffmpeg hevc
+    NSLog(@"check wlz running  click btn play start ");
+    //NSString *srcVideoPath = [[NSBundle mainBundle] pathForResource:@"camera264" ofType:@"mp4"];
+    NSString *srcVideoPath = [[NSBundle mainBundle] pathForResource:@"norotation" ofType:@"mp4"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex:0];
+    NSString *hevcPath = [NSString stringWithFormat:@"%@/123456.mp4", docDir];
+    
+    int bitrate = 1024;
+    int ret = [InkeMediaTool convertVideoMp4:srcVideoPath
+                                    newVideo:hevcPath width:576 height:1024 bitrate:bitrate
+                                         fps:30 gop:5];
+    
+    NSLog(@"check wlz running, ffmpeg cmd end ");
+    return;
+
+
+
+
+    //here for ffmpeg hevc
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex:0];
+    NSString *hevcPath = [NSString stringWithFormat:@"%@/img1.mp4", docDir];
+    int bitrate = 1024;
+    int width = 576;
+    int height = 1024;
+    int tmp = -1;
+    
+    NSLog(@"check wlz running  click btn play start ");
+    NSString *srcVideoPath1 = [[NSBundle mainBundle] pathForResource:@"IMG_0131" ofType:@"MOV"]; //输入文件
+    //转换规则，0,180,宽高转换，90，270不变
+    int rotation = [InkeMediaTool getVideoRotation:srcVideoPath1];
+    if(rotation==0 || rotation==180){
+        //do nothing
+        tmp = width;
+        width = height;
+        height = tmp;
+    }
+    int ret = [InkeMediaTool convertVideoMp4:srcVideoPath1
+                                    newVideo:hevcPath width:width height:height bitrate:bitrate
+                                         fps:30 gop:5];
+    NSLog(@"check wlz running trancode end!!!");

@@ -1,0 +1,3 @@
+1.所有的三方静态库，都拷贝自thirdparty目录。打包前先把meelive目录删除。
+
+2.如果只保留thirdparty下的动态库，编译出来的md5对不上，查看strip.

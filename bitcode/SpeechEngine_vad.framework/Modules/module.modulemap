@@ -1,0 +1,6 @@
+framework module SpeechEngine_vad {
+  umbrella header "SpeechEngine_vad.h"
+
+  export *
+  module * { export * }
+}

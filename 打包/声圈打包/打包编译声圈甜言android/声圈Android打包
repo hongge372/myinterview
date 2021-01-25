@@ -1,0 +1,26 @@
+当前分支：feature/in-business
+
+声圈打包：
+***打包前编译了ijk的话，要先拷贝jar。
+1.编译so，ffmpeg，ijkplayer两个脚步。
+2.运行ijkplayer-java工程的build。并提取jar。
+3.把jar拷贝到android工程。
+
+***
+1.查询版本：
+https://repository.inkept.cn/#browse/browse:maven-releases:com%2Fmeelive%2Fmeelivevideo%2FMeeLiveVideo%2Fsoulmatch-1.1.28
+
+使用打包名字：
+soulmatch-***
+
+
+2.meeliveVideo，工程下build.gradle，修改版本：
+def LibraryVersion = 'soulmatch-1.1.29'
+
+
+3.修改videosender全局工程，gradle.properries
+bujiuSdk = true
+
+4.使用meeliveVideo 的gradle脚本进行打包，点击->clean,->build
+
+5.发布（上传到服务器）,publishing下，publish

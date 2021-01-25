@@ -1,0 +1,59 @@
+1.androd缓存代码和编译路径
+/Users/wanglizheng/inke/sdk/video_sdk/Trunk/ClientSDK/LiveVideo/Download/android
+进入里面执行ndk-build。
+
+
+2.缓存调用方法：
+Ijk里面调用：
+
+
+
+3.引用方式
+编译完成后需要统一拷贝到thirdparty目录（v7为例子）：
+/Users/wanglizheng/inke/sdk/video_sdk/Trunk/ThirdParty/Libraries/Android/armeabi-v7a
+
+
+
+ffmpeg内部调试
+
+1.ijk外抛：
+AVAPP_EVENT_DID_HTTP_SEEK
+        case AVAPP_EVENT_DID_HTTP_SEEK: {                                                                                                                            
+            AVAppHttpEvent *real_data = (AVAppHttpEvent *) data;                                                                                                     
+            jbundle = J4AC_Bundle__Bundle__catchAll(env);                                                                                                            
+            if (!jbundle) {                                                                                                                                          
+                ALOGE("%s: J4AC_Bundle__Bundle__catchAll failed for case %d\n", __func__, what);                                                                     
+                goto fail;                                                                                                                                           
+            }                                                                                                                                                        
+            J4AC_Bundle__putString__withCString__catchAll(env, jbundle, "url", real_data->url);                                                                      
+            J4AC_Bundle__putLong__withCString__catchAll(env, jbundle, "offset", real_data->offset);                                                                  
+            J4AC_Bundle__putInt__withCString__catchAll(env, jbundle, "error", real_data->error);                                                                     
+            J4AC_Bundle__putInt__withCString__catchAll(env, jbundle, "http_code", real_data->http_code);                                                             
+            __android_log_print(ANDROID_LOG_ERROR,"ljc","wlz check native invoke %s %d ", __FUNCTION__, __LINE__ );                                                  
+            J4AC_IjkMediaPlayer__onNativeInvoke(env, weak_thiz, what, jbundle);                                                                                      
+            if (J4A_ExceptionCheck__catchAll(env))                                                                                                                   
+                goto fail;                                                                                                                                           
+            ret = 0;                                                                                                                                                 
+            break;                                                                                                                                                   
+        }
+
+
+2.ffmpeg内部调用：
+Libavutil/application.c
+里面回调：
+//wlz , call AVAPP_EVENT_DID_HTTP_SEEK                                                                                                                               
+void av_application_did_http_seek(AVApplicationContext *h, void *obj, const char *url, int64_t offset, int error, int http_code)                                     
+{                                                                                                                                                                    
+    AVAppHttpEvent event = {0};                                                                                                                                      
+                                                                                                                                                                     
+    if (!h || !obj || !url)                                                                                                                                          
+        return;                                                                                                                                                      
+                                                                                                                                                                     
+    event.obj        = obj;                                                                                                                                          
+    event.offset     = offset;                                                                                                                                       
+    av_strlcpy(event.url, url, sizeof(event.url));                                                                                                                   
+    event.error     = error;                                                                                                                                         
+    event.http_code = http_code;                                                                                                                                     
+                                                                                                                                                                     
+    av_application_on_http_event(h, AVAPP_EVENT_DID_HTTP_SEEK, &event);                                                                                              
+} 

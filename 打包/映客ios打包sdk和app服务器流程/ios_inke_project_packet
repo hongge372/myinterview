@@ -1,0 +1,31 @@
+一 sdk打包
+、修改git。
+1.首先进入git网站，创建一个新的分支，ios的客户端现在都是dev开头。
+从对应的dev拉一个分支，新的分支要以feature开头。比如：
+feature-8030-wlz-player-backg
+
+2.进入新分支的Podfile，修改 pod 'IKVideoSDK', 'XXXX'. XXXX 是我们打包sdk时起的别名。
+./ios_sdk_build.sh feature/8.0.45_wlz_err_broken 8.0.45-player-wlz
+
+
+3.修改后添加备注，然后点击commit change.
+
+
+二、服务器打包。
+1. 进入打包网站：
+旧：
+https://jenkins.inkept.cn/job/inke_common/build?delay=0sec
+新：
+https://jenkins.inkept.cn/job/inke_common_1/
+点击build with parameters
+
+
+2.构建参数中： gitbranch，选择自己的分支，后面有搜索项，可以输入分支名字快速搜索。
+  type 选择 inke_enterprise
+  开始构建。
+
+
+错误：
+服务器打包：
+31m❌  error: The sandbox is not in sync with the Podfile.lock. 
+删除本地podfile.lock

@@ -1,0 +1,13 @@
+1.ios工程如图，可以通过左上角箭头选择企业版或者开发版。
+我们不需要开发版证书，企业版可以使用即可。
+
+2.证书的git地址
+origin	git@code.inke.cn:tpc/client/ios/publibrary/inke_ios_xcode_certificates.git
+本地路径：
+/Users/yixia/inke/jobs/inke_ios_xcode_certificates
+下载更新后点击安装即可。
+
+
+3.工程编译：
+每次更新新的版本后，需要执行 pod install.
+有时候这个命令会失败，需要按照提示加参数。      

@@ -1,0 +1,63 @@
+1.ijk内部代码打印
+
+inject_callback
+
+    case AVAPP_CTRL_WILL_TCP_OPEN: {                                                                                                                   
+                                                                                                                                                           
+            AVAppTcpIOControl *real_data = (AVAppTcpIOControl *)data;                                                                                      
+            jbundle = J4AC_Bundle__Bundle__catchAll(env);                                                                                                  
+            if (!jbundle) {                                                                                                                                
+                ALOGE("%s: J4AC_Bundle__Bundle__catchAll failed for case %d\n", __func__, what);                                                           
+                goto fail;                                                                                                                                 
+            }                                                                                                                                              
+            J4AC_Bundle__putInt__withCString__catchAll(env, jbundle, "error", real_data->error);                                                           
+            J4AC_Bundle__putInt__withCString__catchAll(env, jbundle, "family", real_data->family);                                                         
+            J4AC_Bundle__putString__withCString__catchAll(env, jbundle, "ip", real_data->ip);                                                              
+            J4AC_Bundle__putInt__withCString__catchAll(env, jbundle, "port", real_data->port);                                                             
+            J4AC_Bundle__putInt__withCString__catchAll(env, jbundle, "fd", real_data->fd);                                                                 
+            __android_log_print(ANDROID_LOG_ERROR,"ljc","inject_callback real_data->ip:%s",real_data->ip);                                                 
+            J4AC_IjkMediaPlayer__onNativeInvoke(env, weak_thiz, what, jbundle);                                                                            
+            if (J4A_ExceptionCheck__catchAll(env))                                                                                                         
+                goto fail;                                                                                                                                 
+            ret = 0;                                                                                                                                       
+            break;  
+
+
+2.ffmpeg内部
+
+结构体转换
+
+av_application_on_tcp_will_open(AVApplicationContext *h)
+
+
+av_application_on_tcp_will_open(s->app_ctx); 
+
+
+static int tcp_open(URLContext *h, const char *uri, int flags)                                                                                                                                              
+{                                                                                                                                                                                                           
+    struct addrinfo hints = { 0 }, *ai, *cur_ai;                                                                                                                                                            
+    int port, fd = -1;                                                                                                                                                                                      
+    TCPContext *s = h->priv_data; 
+
+
+
+
+一
+int av_application_on_tcp_will_open(AVApplicationContext *h)                                                                                                                                                
+{                                                                                                                                                                                                           
+    if (h && h->func_on_app_event) {                                                                                                                                                                        
+        AVAppTcpIOControl control = {0};                                                                                                                                                                    
+        return h->func_on_app_event(h, AVAPP_CTRL_WILL_TCP_OPEN, (void *)&control, sizeof(AVAppTcpIOControl));                                                                                              
+    }                                                                                                                                                                                                       
+    return 0;                                                                                                                                                                                               
+} 
+二这个代码的调用在tcp.c里面。
+static int tcp_open(URLContext *h, const char *uri, int flags)                                                                                             
+{  
+
+
+
+ 
+
+                                                                                                                                                                                                         
+ 

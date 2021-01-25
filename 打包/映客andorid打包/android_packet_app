@@ -1,0 +1,11 @@
+1.登陆
+https://android-jenkins.inkept.cn/
+2.找到一个打包环境，比如
+https://android-jenkins.inkept.cn/job/SDK-test/
+3.进去后configure里面改成我们自己的分支，比如:
+8.0.60_maidian_inke_test-wlz
+后面其他的参数不用改，然后点击立即构建。
+
+
+4.安装：
+打包成功后，会发送客户端打包邮件，点击里面的网页链接，扫码安装。
