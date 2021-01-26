@@ -1,0 +1,1 @@
+iOS取堆栈日志： 手机连接电脑--真机下xcode-->window-->devices-->View Device Logs 选择Process对应自己的应用名,Type选Crash。
